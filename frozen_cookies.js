@@ -36,6 +36,7 @@ var last_gc_time = Date.now();
 var cookie_click_speed = 0;
 //var gc_click_percent = localStorage.getItem('autogc');
 Game.prefs['autogc'] = Number(localStorage.getItem('autogc'));
+Game.prefs['nform'] = Number(localStorage.getItem('nform'));
 var initial_clicks = 0;
 var initial_load_time = Date.now();
 var full_history = [];
@@ -44,7 +45,7 @@ var cookieBot = -1;
 var autoclickBot = -1;
 
 function Beautify (value) {
-  notation = ['', ' million', ' billion', ' trillion', ' quadrillion', ' quintillion', ' sextillion', ' septillion'];
+  notation = Game.prefs['nform'] == 1 ? ['', ' million', ' billion', ' trillion', ' quadrillion', ' quintillion', ' sextillion', ' septillion'] : ['', ' million', ' milliard', ' billion', ' billiard', ' trillion', ' trilliard', ' quadrillion'];
   base = 0;
   if (value >= 1000000) {
     value /= 1000;

@@ -197,6 +197,7 @@ Game.UpdateMenu = function() {
     var listing = $('<div />').addClass('listing');
     listing.append($(Game.WriteButton('autobuy','autobuyButton','Autobuy ON','Autobuy OFF',"toggleFrozen('autobuy');")));
     listing.append($(Game.WriteButton('autogc','autogcButton','Autoclick GC ON','Autoclick GC OFF',"toggleFrozen('autogc');")));
+    listing.append($(Game.WriteButton('nform','nformButton','Million/Billion','Million/Milliards',"toggleFrozen('nform');")));
     subsection.append(listing);
     menu.append(subsection);
   }
