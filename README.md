@@ -23,10 +23,7 @@ What can Frozen Cookies do?
  - Automatically updates to the most recent version upon load.
  - Might not eat all of your cookies.
  
-<<<<<<< HEAD
-*Note: Not guaranteed to actually be the most efficient purchase. Just the most efficient that I currently know of.
-=======
-\*Note: Not guaranteed to actually be the most efficient purchase. Just the most efficient that I currently know of.
+ *Note: Not guaranteed to actually be the most efficient purchase. Just the most efficient that I currently know of.
 
 What's new?
 -----------
