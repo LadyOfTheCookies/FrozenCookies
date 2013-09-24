@@ -45,7 +45,7 @@ var cookieBot = -1;
 var autoclickBot = -1;
 
 function Beautify (value) {
-  notation = Game.prefs['nform'] == 1 ? ['', ' million', ' billion', ' trillion', ' quadrillion', ' quintillion', ' sextillion', ' septillion'] : ['', ' million', ' milliard', ' billion', ' billiard', ' trillion', ' trilliard', ' quadrillion'];
+  notation = Game.prefs['nform'] ? ['', ' million', ' milliard', ' billion', ' billiard', ' trillion', ' trilliard', ' quadrillion'] : ['', ' million', ' billion', ' trillion', ' quadrillion', ' quintillion', ' sextillion', ' septillion'];
   base = 0;
   if (value >= 1000000) {
     value /= 1000;
