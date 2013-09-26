@@ -31,7 +31,7 @@ function drawCircles(t_d, canvas) {
   t_d.forEach( function(o_draw) {
     if (o_draw.overlay)
     {
-      c--;
+      i_c--;
     }
     else
     {
