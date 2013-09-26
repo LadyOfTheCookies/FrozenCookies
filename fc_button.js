@@ -45,8 +45,8 @@ function drawCircles(t_d, canvas) {
         return $(this).createGradient({
           x1: layer.x, y1: layer.y,
           x2: layer.x, y2: layer.y,
-          r1: layer.radius-layer.strokeWidth, r2: layer.radius+layer.strokeWidth*(1+i_c*0.25),
-          c1: o_draw.c1, c2: o_draw.c2
+          r1: layer.radius-layer.strokeWidth, r2: layer.radius+layer.strokeWidth,
+          c1: o_draw.c1, c2: o_draw.c2 ? o_draw.c2 : 'white'
         });
       } : o_draw.c1,
       x: 45, y:45,
