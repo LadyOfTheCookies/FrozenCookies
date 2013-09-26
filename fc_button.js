@@ -21,6 +21,7 @@ function drawCircles(t_d, canvas) {
   });*/
   var c = canvas;
   var i_c = 0;
+  var i_tc = 0;
   var t_b = ['#AAA','#BBB','#CCC','#DDD','#EEE','#FFF'];
   c.drawRect({
     fillStyle: '#999',
@@ -28,18 +29,25 @@ function drawCircles(t_d, canvas) {
     width: 250, height: 5+t_d.length*15
   });
   t_d.forEach( function(o_draw) {
-    c.drawArc({
-      strokeStyle: t_b[i_c],
-      strokeWidth: 10,
-      x: 45, y:45,
-      radius: 40-i_c*10,
-    });
-    c.drawArc({
-      strokeStyle: t_b[i_c+2],
-      strokeWidth: 1,
-      x: 45, y:45,
-      radius: 35-i_c*10
-    });
+    if (o_draw.overlay)
+    {
+      c--;
+    }
+    else
+    {
+      c.drawArc({
+        strokeStyle: t_b[i_c],
+        strokeWidth: 10,
+        x: 45, y:45,
+        radius: 40-i_c*10,
+      });
+      c.drawArc({
+        strokeStyle: t_b[i_c+2],
+        strokeWidth: 1,
+        x: 45, y:45,
+        radius: 35-i_c*10
+      });
+    }
     c.drawArc({
       strokeStyle: o_draw.c1,
       x: 45, y:45,
@@ -54,11 +62,12 @@ function drawCircles(t_d, canvas) {
       c.drawText({
         font: "10px Arial",
         fillStyle: o_draw.c1,
-        x: 200+s_t.length, y: 20+15*i_c,
+        x: 200+s_t.length, y: 20+15*i_tc,
         text: s_t
       });   
     }
     i_c++;
+    i_tc++;
   });
 }
 
@@ -108,7 +117,8 @@ function updateBuyTimers() {
   var purchaseTotal = nextPurchase().cost;
   var chainTotal = nextChainedPurchase().cost;
   var bankCompletion = bankTotal ? (Math.min(Game.cookies, bankTotal)) / bankTotal : 0;
-  var purchaseCompletion = Math.max(Game.cookies - bankTotal, 0) / (bankTotal + purchaseTotal);
+  var purchaseCompletion = Game.cookies/(bankTotal + purchaseTotal);
+  var bankPurchaseCompletion = bankTotal/(bankTotal + purchaseTotal);
   var chainCompletion = Math.max(Game.cookies - bankTotal, 0) / (bankTotal + chainTotal);
   var bankPercent = bankTotal / (purchaseTotal + bankTotal);
   var purchasePercent = purchaseTotal / (purchaseTotal + bankTotal);
@@ -136,6 +146,15 @@ function updateBuyTimers() {
       c1: '#111',
       name: "Purchase Completion Time",
       display: timeDisplay(divCps(Math.max(purchaseTotal + bankTotal - Game.cookies,0), Game.cookiesPs))
+    });
+  }
+  if (bankPercent > 0) {
+    t_draw.push({
+      f_percent: bankPercent,
+      c1: '#111',
+      name: "Bank Percent",
+      display: bankPercent,
+      overlay: true
     });
   }
   drawCircles(t_draw, $('#fcBuyTimer'));
