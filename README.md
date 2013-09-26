@@ -29,7 +29,6 @@ What's new?
 -----------
 
 2013-09-23: Added Chained Upgrade purchases
->>>>>>> origin/master
 
 Information about Frozen Cookies' Data
 ======================================
