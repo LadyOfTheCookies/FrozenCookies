@@ -45,7 +45,7 @@ function drawCircles(t_d, canvas) {
         return $(this).createGradient({
           x1: layer.x, y1: layer.y,
           x2: layer.x, y2: layer.y,
-          r1: layer.radius-layer.strokeWidth*(1+0.1*i_c), r2: layer.radius+layer.strokeWidth*(1+0.2*i_c),
+          r1: layer.radius-layer.strokeWidth*(1+0.1*i_c), r2: layer.radius+layer.strokeWidth*(1+0.3*i_c),
           c1: o_draw.c1, c2: o_draw.c2 ? o_draw.c2 : 'white'
         });
       } : o_draw.c1,
@@ -124,7 +124,7 @@ function updateBuyTimers() {
   if (bankTotal > 0) {
     t_draw.push({
       f_percent: bankCompletion,
-      c1: '#666',
+      c1: '#555',
       name: "Golden Cookie Bank",
       display: timeDisplay(divCps(Math.max(bankTotal - Game.cookies,0), Game.cookiesPs))
     });
