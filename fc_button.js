@@ -129,7 +129,6 @@ function updateBuyTimers() {
     t_draw.push({
       f_percent: bankCompletion,
       c1: '#666',
-      c2: '#666',
       name: "Golden Cookie Bank",
       display: timeDisplay(divCps(Math.max(bankTotal - Game.cookies,0), Game.cookiesPs))
     });
@@ -138,7 +137,6 @@ function updateBuyTimers() {
     t_draw.push({
       f_percent: chainCompletion,
       c1: '#333',
-      c2: '#333',
       name: "Chain Completion Time",
       display: timeDisplay(divCps(Math.max(chainTotal + bankTotal - Game.cookies,0), Game.cookiesPs))
     });
@@ -147,7 +145,6 @@ function updateBuyTimers() {
     t_draw.push({
       f_percent: purchaseCompletion,
       c1: '#111',
-      c2: '#111',
       name: "Purchase Completion Time",
       display: timeDisplay(divCps(Math.max(purchaseTotal + bankTotal - Game.cookies,0), Game.cookiesPs))
     });
