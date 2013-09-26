@@ -153,7 +153,8 @@ function updateBuyTimers() {
       f_percent: bankPercent,
       c1: 'red',
       name: "Bank Percent",
-      display: bankPercent,
+      display: Math.round(bankPercent*10000)/100+'%',
+      overlay: true
     });
   }
   drawCircles(t_draw, $('#fcBuyTimer'));
