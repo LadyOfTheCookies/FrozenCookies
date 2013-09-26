@@ -151,7 +151,7 @@ function updateBuyTimers() {
   if (bankPercent > 0) {
     t_draw.push({
       f_percent: bankPercent,
-      c1: '#111',
+      c1: 'red',
       name: "Bank Percent",
       display: bankPercent,
       overlay: true
