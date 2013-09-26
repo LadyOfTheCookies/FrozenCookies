@@ -41,15 +41,14 @@ function drawCircles(t_d, canvas) {
       radius: 35-i_c*10
     });
     c.drawArc({
-      strokeStyle: o_draw.c1,
-/*      function(layer) {
+      strokeStyle: Game.prefs['drawgradient'] ? function(layer) {
         return $(this).createGradient({
           x1: layer.x, y1: layer.y,
           x2: layer.x, y2: layer.y,
           r1: layer.radius-layer.strokeWidth, r2: layer.radius+layer.strokeWidth*(1+i_c*0.25),
           c1: o_draw.c1, c2: o_draw.c2
         });
-      },*/
+      } : o_draw.c1,
       x: 45, y:45,
       strokeWidth: 7,
       start: 0,
@@ -257,7 +256,8 @@ function FCMenu() {
       var listing = $('<div />').addClass('listing');
       listing.append($(Game.WriteButton('autobuy','autobuyButton','Autobuy ON','Autobuy OFF',"toggleFrozen('autobuy');")));
       listing.append($(Game.WriteButton('autogc','autogcButton','Autoclick GC ON','Autoclick GC OFF',"toggleFrozen('autogc');")));
-    listing.append($(Game.WriteButton('nform','nformButton','Million/Milliards','Million/Billion',"toggleFrozen('nform');Game.RebuildStore();Game.RebuildUpgrades();")));
+      listing.append($(Game.WriteButton('drawgradient','drawgradientButton','Draw Gradient ON','Draw Gradient OFF',"toggleFrozen('drawgradient');")));
+      listing.append($(Game.WriteButton('nform','nformButton','Million/Milliards','Million/Billion',"toggleFrozen('nform');Game.RebuildStore();Game.RebuildUpgrades();")));
       subsection.append(listing);
       menu.append(subsection);
       var subsection = $('<div />').addClass('subsection');
