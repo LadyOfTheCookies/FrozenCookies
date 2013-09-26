@@ -32,7 +32,6 @@ var efficiencyWeight = 1.15;
 Game.prefs['autobuy'] = Number(localStorage.getItem('autobuy'));
 Game.prefs['autogc'] = Number(localStorage.getItem('autogc'));
 Game.prefs['nform'] = Number(localStorage.getItem('nform'));
-Game.prefs['drawgradient'] = Number(localStorage.getItem('drawgradient'));
 var simulatedGCPercent = Number(localStorage.getItem('simulategc') || 1);
 var non_gc_time = Number(localStorage.getItem('nonFrenzyTime'));
 var gc_time = Number(localStorage.getItem('frenzyTime'));
