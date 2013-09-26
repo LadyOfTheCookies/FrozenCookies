@@ -120,7 +120,7 @@ function updateBuyTimers() {
   var purchaseCompletion = Game.cookies/(bankTotal + purchaseTotal);
   var bankPurchaseCompletion = bankTotal/(bankTotal + purchaseTotal);
   var chainCompletion = Math.max(Game.cookies - bankTotal, 0) / (bankTotal + chainTotal);
-  var bankPercent = bankTotal / (purchaseTotal + bankTotal);
+  var bankPercent = Math.min(Game.cookies, bankTotal) / (bankTotal + purchaseTotal);
   var purchasePercent = purchaseTotal / (purchaseTotal + bankTotal);
   
   var t_draw = [];
@@ -154,7 +154,6 @@ function updateBuyTimers() {
       c1: 'red',
       name: "Bank Percent",
       display: bankPercent,
-      overlay: true
     });
   }
   drawCircles(t_draw, $('#fcBuyTimer'));
