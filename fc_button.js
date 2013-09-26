@@ -45,7 +45,7 @@ function drawCircles(t_d, canvas) {
         return $(this).createGradient({
           x1: layer.x, y1: layer.y,
           x2: layer.x, y2: layer.y,
-          r1: layer.radius-layer.strokeWidth, r2: layer.radius+layer.strokeWidth,
+          r1: layer.radius-layer.strokeWidth*(1+0.1*c), r2: layer.radius+layer.strokeWidth*(1+0.2*c),
           c1: o_draw.c1, c2: o_draw.c2 ? o_draw.c2 : 'white'
         });
       } : o_draw.c1,
@@ -79,7 +79,6 @@ function updateTimers() {
     t_draw.push({
       f_percent: gc_delay,
       c1: "gold",
-      c2: "white",
       name: "Golden Cookie Time",
       display: timeDisplay(Game.goldenCookie.delay/Game.fps)
     });
@@ -88,7 +87,6 @@ function updateTimers() {
     t_draw.push({
       f_percent: frenzy_delay,
       c1: "red",
-      c2: "white",
       name: "Frenzy Time",
       display: timeDisplay(Game.frenzy/Game.fps)
     });
@@ -97,7 +95,6 @@ function updateTimers() {
     t_draw.push({
       f_percent: click_frenzy_delay,
       c1: "#00C4FF",
-      c2: "white",
       name: "Click Frenzy Time",
       display: timeDisplay(Game.clickFrenzy/Game.fps)
     });
@@ -106,7 +103,6 @@ function updateTimers() {
     t_draw.push({
       f_percent: decimal_HC_complete,
       c1: "#000",
-      c2: "white",
       name: "HC Completion",
       display: (Math.round(decimal_HC_complete*10000)/100)+"%"
     });
