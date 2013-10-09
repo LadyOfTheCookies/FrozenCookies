@@ -191,9 +191,9 @@ function FCMenu() {
         chain_store = (chain_recommend.type == 'building') ? Game.ObjectsById : Game.UpgradesById;
         subsection.append($('<div />').addClass('listing').html('<b>Building Chain to:</b> ' + chain_store[chain_recommend.id].name));
       }
-      subsection.append($('<div />').addClass('listing').html('<b>Time til completion:</b> ' + timeDisplay(divCps((recommendation.cost + delayAmount() - Game.cookies), Game.cookiesPs))));
+      subsection.append($('<div />').addClass('listing').html('<b>Time til Completion:</b> ' + timeDisplay(divCps((recommendation.cost + delayAmount() - Game.cookies), Game.cookiesPs))));
       if (!(recommendation.id == chain_recommend.id && recommendation.type == chain_recommend.type)) {
-        subsection.append($('<div />').addClass('listing').html('<b>Time til Chain completion:</b> ' + timeDisplay(chain_recommend.cost)));
+        subsection.append($('<div />').addClass('listing').html('<b>Time til Chain Completion:</b> ' + timeDisplay(divCps(chain_recommend.cost + delayAmount() - Game.cookies, Game.cookiesPs))));
       }
       subsection.append($('<div />').addClass('listing').html('<b>Cost:</b> ' + Beautify(recommendation.cost)));
       subsection.append($('<div />').addClass('listing').html('<b>Golden Cookie Bank:</b> ' + Beautify(delayAmount())));
@@ -201,10 +201,10 @@ function FCMenu() {
       subsection.append($('<div />').addClass('listing').html('<b>Full &#916; CPS:</b> ' + Beautify(recommendation.delta_cps)));
       subsection.append($('<div />').addClass('listing').html('<b>Purchase Efficiency:</b> ' + Beautify(recommendation.efficiency)));
       if (!(recommendation.id == chain_recommend.id && recommendation.type == chain_recommend.type)) {
-        subsection.append($('<div />').addClass('listing').html('<b>Chain efficiency:</b> ' + Beautify(chain_recommend.efficiency)));
+        subsection.append($('<div />').addClass('listing').html('<b>Chain Efficiency:</b> ' + Beautify(chain_recommend.efficiency)));
       }
       if (Game.cookiesPs > 0) {
-        subsection.append($('<div />').addClass('listing').html('<b>Golden Cookie efficiency:</b> ' + Beautify(gcEfficiency())));
+        subsection.append($('<div />').addClass('listing').html('<b>Golden Cookie Efficiency:</b> ' + Beautify(gcEfficiency())));
       }
       menu.append(subsection);
       var subsection = $('<div />').addClass('subsection');
@@ -247,13 +247,12 @@ function FCMenu() {
       menu.append(subsection);
       var subsection = $('<div />').addClass('subsection');
       subsection.append($('<div />').addClass('title').html('Other Information'));
-      var frenzy_mod = (Game.frenzy > 0) ? Game.frenzyPower : 1;
-      var base_cps = Game.cookiesPs / frenzy_mod;
+      var cps = baseCps();
       var baseChosen = (Game.frenzy > 0) ? '' : ' (*)';
       var frenzyChosen = (Game.frenzy > 0) ? ' (*)' : '';
-      subsection.append($('<div />').addClass('listing').html('<b>Base CPS' + baseChosen + ':</b> ' + Beautify(base_cps)));
-      subsection.append($('<div />').addClass('listing').html('<b>Frenzy CPS' + frenzyChosen + ':</b> ' + Beautify(base_cps * 7)));
-      subsection.append($('<div />').addClass('listing').html('<b>Estimated Effective CPS:</b> ' + Beautify(base_cps + gcPs(weightedCookieValue(true)))));
+      subsection.append($('<div />').addClass('listing').html('<b>Base CPS' + baseChosen + ':</b> ' + Beautify(cps)));
+      subsection.append($('<div />').addClass('listing').html('<b>Frenzy CPS' + frenzyChosen + ':</b> ' + Beautify(cps * 7)));
+      subsection.append($('<div />').addClass('listing').html('<b>Estimated Effective CPS:</b> ' + Beautify(cps + gcPs(weightedCookieValue(true)))));
       subsection.append($('<div />').addClass('listing').html('<b>Game Started:</b> ' + Game.sayTime((Date.now()-Game.startDate)/1000*Game.fps)));
       menu.append(subsection);
       var subsection = $('<div />').addClass('subsection');
@@ -266,7 +265,7 @@ function FCMenu() {
       menu.append(subsection);
       var subsection = $('<div />').addClass('subsection');
       subsection.append($('<div />').addClass('title').html('Internal Information'));
-      var buildTable = $('<table />').html('<tr><th>Building</th><th>efficiency</th><th>Cost</th><th>&#916; CPS</th></tr>');
+      var buildTable = $('<table />').html('<tr><th>Building</th><th>Efficiency</th><th>Cost</th><th>&#916; CPS</th></tr>');
       recommendationList().forEach(function(rec) {
         var store = (rec.type == 'building') ? Game.ObjectsById : Game.UpgradesById;
         var item  = store[rec.id];
