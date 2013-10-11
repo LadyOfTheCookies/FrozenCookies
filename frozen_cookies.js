@@ -74,7 +74,7 @@ function fcInit() {
   FrozenCookies.caches.buildings = [];
   FrozenCookies.caches.upgrades = [];
   
-  function Beautify (value) {
+  Beautify = function (value) {
     var negative = false;
     if (value < 0) {
       negative = true;
