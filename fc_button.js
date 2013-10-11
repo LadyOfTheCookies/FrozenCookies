@@ -143,7 +143,8 @@ function drawCircles(t_d, canvas) {
   c.drawRect({
     fillStyle: '#999',
     x: 225, y: 45,
-    width: maxWidth + 20, height: maxHeight + 20
+    width: maxWidth + 20, height: maxHeight + 20,
+    fromCenter: false
   });
   t_d.forEach( function(o_draw) {
     if (o_draw.overlay)
