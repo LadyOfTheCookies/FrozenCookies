@@ -115,6 +115,7 @@ function Beautify (value) {
       }
       if (base > notation.length) {
         value = Math.POSITIVE_INFINITY;
+        notationValue = "";
       } else {
         notationValue = notation[base];
       }
