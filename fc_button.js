@@ -142,8 +142,8 @@ function drawCircles(t_d, canvas) {
                      .reduce(function(sum,item){return sum+item;},0);
   c.drawRect({
     fillStyle: '#999',
-    x: 225, y: 45,
-    width: maxWidth + 20, height: maxHeight + 20,
+    x: 215, y: 35-t_d.length*15,
+    width: maxWidth + 10, height: maxHeight + 10,
     fromCenter: false
   });
   t_d.forEach( function(o_draw) {
