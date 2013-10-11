@@ -142,9 +142,8 @@ function drawCircles(t_d, canvas) {
                      .reduce(function(sum,item){return sum+item;},0);
   c.drawRect({
     fillStyle: '#999',
-    x: 215, y: 35-t_d.length*15,
-    width: maxWidth + 10, height: maxHeight + 10,
-    fromCenter: false
+    x: 225, y: 45,
+    width: maxWidth + 20, height: maxHeight + 20,
   });
   t_d.forEach( function(o_draw) {
     if (o_draw.overlay)
@@ -181,7 +180,7 @@ function drawCircles(t_d, canvas) {
         fontSize: "12px",
         fontFamily: "Arial",
         fillStyle: o_draw.c1,
-        x: 225+s_t.length, y: heightOffset+15*i_tc,
+        x: 225, y: heightOffset+15*i_tc,
         text: s_t
       });   
     }
