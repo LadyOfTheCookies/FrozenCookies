@@ -104,6 +104,7 @@ function Beautify (value) {
                         ['', '*10⁶', '*10⁹', '*10¹²', '*10¹⁵', '*10¹⁸', '*10²¹', '*10²⁴'],
                         ['', ' million', ' milliard', ' billion', ' billiard', ' trillion', ' trilliard', ' quadrillion']
                         ];
+    var notationValue = "";
     var notation = notationList[FrozenCookies.numberDisplay-1];
     var base = 0;
     if (value >= 1000000 && Number.isFinite(value)) {
