@@ -128,10 +128,6 @@ Game.RebuildUpgrades(true);
 Game.oldUpdateMenu = Game.UpdateMenu;
 
 function drawCircles(t_d, canvas) {
-  /*c = canvas.jCanvas({
-    x: 50, y:50,
-    radius: 40
-  });*/
   var c = canvas;
   var heightOffset = 45 - (15 * (t_d.length - 1) / 2)
   var i_c = 0;

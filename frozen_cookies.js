@@ -74,45 +74,6 @@ function fcInit() {
   FrozenCookies.caches.buildings = [];
   FrozenCookies.caches.upgrades = [];
   
-  Beautify = function (value) {
-    var negative = false;
-    if (value < 0) {
-      negative = true;
-      value *= -1;
-    }
-    if (FrozenCookies.numberDisplay) {
-      var notationList = [['', ' million', ' billion', ' trillion', ' quadrillion', ' quintillion', ' sextillion', ' septillion'],
-                          ['', ' M', ' B', ' T', ' Qa', ' Qi', ' Sx', ' Sp'],
-                          ['', ' M', ' G', ' T', ' P', ' E', ' Z', ' Y'],
-                          ['', '*10⁶', '*10⁹', '*10¹²', '*10¹⁵', '*10¹⁸', '*10²¹', '*10²⁴'],
-                          ['', ' million', ' milliard', ' billion', ' billiard', ' trillion', ' trilliard', ' quadrillion']
-                          ];
-      var notationValue = "";
-      var notation = notationList[FrozenCookies.numberDisplay-1];
-      var base = 0;
-      if (value >= 1000000 && Number.isFinite(value)) {
-        value /= 1000;
-        while(value >= 1000){
-          value /= 1000;
-          base++;
-        }
-        if (base > notation.length) {
-          value = Math.POSITIVE_INFINITY;
-          notationValue = "";
-        } else {
-          notationValue = notation[base];
-        }
-      }
-      value = Math.round(value * 1000) / 1000.0;
-    }
-    if (!Number.isFinite(value)) {
-      return 'Infinity';
-    } else {
-      var output = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + notationValue;
-      return negative ? '-' + output : output;
-    }
-  }
-  
   Game.prefs.autoBuy = FrozenCookies.autoBuy;
   Game.prefs.autoGC = FrozenCookies.autoGC;
   Game.RebuildStore();
@@ -120,6 +81,7 @@ function fcInit() {
   Game.sayTime = function(time,detail) {return timeDisplay(time/Game.fps);}
   Game.oldReset = Game.Reset;
   Game.Win = function(what) {return fcWin(what);}
+  Beautify = funtion(value) {return fcBeautify(value);}
 }
 
 function preferenceParse(setting, defaultVal) {
@@ -129,6 +91,43 @@ function preferenceParse(setting, defaultVal) {
     localStorage.setItem(setting, value);
   }
   return Number(value);
+}
+
+function fcBeautify (value) {
+  var notationValue = '';
+  var negative = false;
+  if (value < 0) {
+    negative = true;
+    value *= -1;
+  }
+  if (FrozenCookies.numberDisplay) {
+    var notationList = [['', ' million', ' billion', ' trillion', ' quadrillion', ' quintillion', ' sextillion', ' septillion'],
+                        ['', ' M', ' B', ' T', ' Qa', ' Qi', ' Sx', ' Sp'],
+                        ['', ' M', ' G', ' T', ' P', ' E', ' Z', ' Y'],
+                        ['', '*10⁶', '*10⁹', '*10¹²', '*10¹⁵', '*10¹⁸', '*10²¹', '*10²⁴']
+                        ];
+    var notation = notationList[FrozenCookies.numberDisplay-1];
+    var base = 0;
+    if (value >= 1000000 && Number.isFinite(value)) {
+      value /= 1000;
+      while(value >= 1000){
+        value /= 1000;
+        base++;
+      }
+      if (base > notation.length) {
+        value = Math.POSITIVE_INFINITY;
+      } else {
+        notationValue = notation[base];
+      }
+    }
+    value = Math.round(value * 1000) / 1000.0;
+  }
+  if (!Number.isFinite(value)) {
+    return 'Infinity';
+  } else {
+    var output = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + notationValue;
+    return negative ? '-' + output : output;
+  }
 }
 
 function timeDisplay(seconds) {
